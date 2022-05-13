@@ -14,4 +14,8 @@ getAll(){
   return this.http.get(this.baseUrl);
 }
 
+createEntry(entry: any){
+  return this.http.post(this.baseUrl, entry);
+}
+
 }
