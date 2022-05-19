@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 // services
 import { EntryService } from './entry.service';
+import { AuthService } from './auth.service';
 
 // Material Design
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,10 +20,16 @@ import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import {MatSelectModule} from '@angular/material/select';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatListModule} from '@angular/material/list';
+
 
 // forms
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NewEntryComponent } from './new-entry/new-entry.component';
+import { UpdateEntryComponent } from './update-entry/update-entry.component';
+import { DeleteEntryComponent } from './delete-entry/delete-entry.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +37,10 @@ import { NewEntryComponent } from './new-entry/new-entry.component';
     EntriesComponent,
     FooterComponent,
     HeaderComponent,
-    NewEntryComponent
+    NewEntryComponent,
+    UpdateEntryComponent,
+    DeleteEntryComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -44,11 +54,16 @@ import { NewEntryComponent } from './new-entry/new-entry.component';
     MatCardModule,
     MatSelectModule,
     MatToolbarModule,
+    MatDialogModule,
+    MatListModule,
+    MatListModule,
 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
     
   ],
-  providers: [EntryService],
+  entryComponents:[UpdateEntryComponent],
+  providers: [EntryService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

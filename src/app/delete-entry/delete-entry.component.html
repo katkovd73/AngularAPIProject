@@ -1,0 +1,28 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Are you sure you want to delete this entry?</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-list>
+            <mat-list-item>
+                <span class="entryItem"><b>Description:</b></span>
+                {{entry.description}}
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item >
+                <span class="entryItem"><b>Entry Type:</b></span>
+                 <span [ngStyle]="entry.isExpense ? {color:'red'} : {color:'green'}">{{(entry.isExpense) ? 'Expense' : 'Income'}}</span> 
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <span class="entryItem"><b>Value:</b></span>
+                 ${{entry.value}}
+            </mat-list-item>
+        </mat-list>
+    </mat-card-content>
+    <button mat-flat-button (click)="cancel()">Cancel</button>
+    <button mat-raised-button color="warn" (click)="confirm()">Confirm</button>
+    <mat-card-actions>
+
+    </mat-card-actions>
+</mat-card>   
