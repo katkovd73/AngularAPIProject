@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class EntryService {
 
-baseUrl: string = 'http://localhost:54763/api/entries/'
+baseUrl: string = 'https://localhost:44372/api/entries/'
 
 constructor(private http: HttpClient) { }
 

@@ -1,6 +1,6 @@
 <mat-card>
     <span>Create new entry</span>
-    <form class="new-entry-form" [formGroup]="entryForm" (ngSubmit)="onSubmit()">
+    <form class="new-entry-form" [formGroup]="entryForm" (change)="onChange(entryForm)">
 
         <mat-form-field class="new-entry-field" >
             <input matInput placeholder="Entry description" formControlName="description">
@@ -18,7 +18,38 @@
             <input matInput placeholder="Entry value" formControlName="value">
         </mat-form-field>
 
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" formControlName="isSubscribed"> Subscribe to mailing list
+            </label>
+        </div>
+        <br>
+
+        <div>
+            <label for="contactMethod">Contact Method  </label>
+            <select formControlName="contactMethod" id="contactMethod">
+                <option value=""></option>
+                <!-- using ngValue to bind the object of the selected item -->
+                <!-- <option *ngFor="let method of contactMethods"  [ngValue]="method">{{method.methodName}}</option> -->
+
+                <!-- using value to bind value to method.id -->
+                <option *ngFor="let method of contactMethods"  [value]="method.id">{{method.methodName}}</option>
+                
+            </select>
+        </div>
+
+
+        <br>
         <button mat-raised-button [disabled]="!entryForm.valid">Create new</button>
+
+        <br>      
+        
+        <br>
+
+        <!-- Tool to look at your entry values in json format -->
+        <p>
+            {{ entryForm.value | json }}
+          </p>
 
     </form>
 </mat-card>

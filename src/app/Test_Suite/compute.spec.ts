@@ -2,7 +2,7 @@ import { compute} from '../Test_Functions/compute';
 
 describe('Compute', () => {
  
-  it('should return 0 if input is negative', () => {
+  it('should return 0 if input is negative', function() {
     const result = compute(-1);
     expect(result).toBe(0);
   })

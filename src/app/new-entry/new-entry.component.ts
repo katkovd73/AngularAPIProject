@@ -10,6 +10,12 @@ import { Type } from '../interfaces/Type';
 })
 export class NewEntryComponent {
 
+  contactMethods = [
+    {id:1, methodName: 'Email'},
+    {id:2, methodName: 'Mail'},
+    {id:3, methodName: 'Phone'}
+  ]
+
   types: Type[] = [
     {value:true, display:'Expense'},
     {value:false, display:'Income'}
@@ -20,7 +26,9 @@ export class NewEntryComponent {
   entryForm = new FormGroup({
     description: new FormControl('', Validators.required),
     isExpense: new FormControl('', Validators.required),
-    value: new FormControl('', [Validators.required, Validators.pattern('\\d+\\.?\\d*')])
+    value: new FormControl('', [Validators.required, Validators.pattern('\\d+\\.?\\d*')]),
+    isSubscribed: new FormControl(),
+    contactMethod: new FormControl()
   })
 
   onSubmit(){
@@ -28,6 +36,11 @@ export class NewEntryComponent {
     this.service.createEntry(this.entryForm.value).subscribe((data)=> {
       console.log('Data - ',data);
     })
+  }
+
+  // Tool to look at the properties of your FormGroup object
+  onChange(f:any) {
+    console.log(f);
   }
 
 }
