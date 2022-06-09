@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EntryService } from '../entry.service';
 import { Type } from '../interfaces/Type';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-entry',
@@ -10,37 +11,25 @@ import { Type } from '../interfaces/Type';
 })
 export class NewEntryComponent {
 
-  contactMethods = [
-    {id:1, methodName: 'Email'},
-    {id:2, methodName: 'Mail'},
-    {id:3, methodName: 'Phone'}
-  ]
-
   types: Type[] = [
     {value:true, display:'Expense'},
     {value:false, display:'Income'}
   ]
 
-  constructor(private service:EntryService) { }
+  constructor(private service:EntryService, private router:Router) { }
 
   entryForm = new FormGroup({
     description: new FormControl('', Validators.required),
     isExpense: new FormControl('', Validators.required),
-    value: new FormControl('', [Validators.required, Validators.pattern('\\d+\\.?\\d*')]),
-    isSubscribed: new FormControl(),
-    contactMethod: new FormControl()
+    value: new FormControl('', [Validators.required, Validators.pattern('\\d+\\.?\\d*')])
   })
 
   onSubmit(){
     console.log(this.entryForm.value);
     this.service.createEntry(this.entryForm.value).subscribe((data)=> {
       console.log('Data - ',data);
+      this.router.navigate(['/']);
     })
-  }
-
-  // Tool to look at the properties of your FormGroup object
-  onChange(f:any) {
-    console.log(f);
   }
 
 }

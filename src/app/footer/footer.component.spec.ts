@@ -1,17 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { FooterComponent } from './footer.component';
 
 describe('FooterComponent', () => {
   let component: FooterComponent;
   let fixture: ComponentFixture<FooterComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ FooterComponent ]
-    })
-    .compileComponents();
-  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(FooterComponent);
@@ -19,7 +11,13 @@ describe('FooterComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create FooterComponent', () => {
     expect(component).toBeTruthy();
   });
+
+  it('footer text verified', () => {
+    const footerElement: HTMLElement = fixture.nativeElement;
+    const footerText = footerElement.querySelector('mat-toolbar')!;
+    expect(footerText.textContent).toEqual('Test-Driven Development Test Application');
+  })
 });
