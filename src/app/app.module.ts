@@ -30,6 +30,8 @@ import { NewEntryComponent } from './new-entry/new-entry.component';
 import { UpdateEntryComponent } from './update-entry/update-entry.component';
 import { DeleteEntryComponent } from './delete-entry/delete-entry.component';
 import { RegisterComponent } from './register/register.component';
+import { AdddollarsignPipe } from './adddollarsign.pipe';
+import { DataTestService } from './data-test.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import { RegisterComponent } from './register/register.component';
     NewEntryComponent,
     UpdateEntryComponent,
     DeleteEntryComponent,
-    RegisterComponent
+    RegisterComponent,
+    AdddollarsignPipe
   ],
   imports: [
     BrowserModule,
@@ -63,7 +66,7 @@ import { RegisterComponent } from './register/register.component';
     
   ],
   entryComponents:[UpdateEntryComponent],
-  providers: [EntryService, AuthService],
+  providers: [EntryService, AuthService, DataTestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

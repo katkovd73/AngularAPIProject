@@ -7,13 +7,13 @@ describe('NewEntryComponent', () => {
   let component: NewEntryComponent;
   let fixture: ComponentFixture<NewEntryComponent>;
  
- let userServiceSpy = jasmine.createSpyObj('EntryService', ['onSubmit']);
- userServiceSpy.onSubmit.and.returnValue('Entry was created!');
+ let userServiceSpy = jasmine.createSpyObj('EntryService', ['createEntry']);
+ //userServiceSpy.createEntry.and.returnValue('Entry was created!');
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ NewEntryComponent ],
-      providers: [{provide:EntryService, useValue: userServiceSpy}, {provide:Router}]
+      providers: [{provide:EntryService, useValue: userServiceSpy}, {provide:Router, useValue:{}}]
     })
     .compileComponents();
   });

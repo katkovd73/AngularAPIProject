@@ -16,7 +16,7 @@
    <!-- Value Column -->
    <ng-container matColumnDef="Value">
     <th mat-header-cell *matHeaderCellDef> Value </th>
-    <td mat-cell *matCellDef="let element"> {{element.Value}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.Value | adddollarsign}} </td>
   </ng-container>
 
    <!-- Actions Column -->

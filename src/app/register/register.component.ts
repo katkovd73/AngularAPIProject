@@ -17,9 +17,7 @@ export class RegisterComponent {
       password: ['',Validators.required],
       confirmPassword: ['',Validators.required],
     })
-  }
-    //{validator:matchingFields('password', 'confirmPassword')})
-   //}
+  }    
   
   onSubmit(){
     console.log(this.registerForm.value);
